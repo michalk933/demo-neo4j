@@ -16,7 +16,7 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     @Query("MATCH (u:User {reader: {readerId}}) MATCH (u)<-[r:READ]-(b:Book) RETURN u,b,r")
     Optional<User> getUser(@Param("readerId") final String readerId);
 
-    @Query("CREATE (:User {name: {userName}, reader: {readerId}})")
+    @Query("CREATE (u:User {name: {userName}, reader: {readerId}}) RETURN u")
     Optional<User> createUser(@Param("userName") final String name, @Param("readerId") final String readerId);
 
     @Query("MATCH (u:User {reader: {readerId}}) DETACH DELETE u")

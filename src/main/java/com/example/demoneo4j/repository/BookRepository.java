@@ -17,7 +17,7 @@ public interface BookRepository extends Neo4jRepository<Book, Long> {
     @Query("MATCH (b) WHERE ID(b)={bookId} RETURN b")
     Optional<Book> getBook(@Param("bookId") final long bookId);
 
-    @Query("CREATE (:Book {title: {title}, ISBN: {isbn}, author: {author}})")
+    @Query("CREATE (b :Book {title: {title}, ISBN: {isbn}, author: {author}}) RETURN b")
     Optional<Book> createBook(
             @Param("title") final String title,
             @Param("isbn") final String isbn,
@@ -34,6 +34,7 @@ public interface BookRepository extends Neo4jRepository<Book, Long> {
             @Param("isbn") final String isbn,
             @Param("author") final String author
     );
+
 
     Optional<Book> findByTitle(@Param("title") String title);
 
