@@ -21,6 +21,11 @@ public class UserController {
         return service.getUsers();
     }
 
+    @GetMapping("/books")
+    public List<User> getUsersWithBook() {
+        return service.getUsersWithBook();
+    }
+
     @GetMapping("/{readerId}")
     public User getUser(@PathVariable("readerId") String readerId) {
         return service.getUser(readerId);

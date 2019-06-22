@@ -7,11 +7,12 @@ import java.util.List;
 public interface UserService {
 
     /**
-     * Method return all user
+     * Method return all user with books
      *
      * @return users
      */
-    List<User> getUsers();
+    List<User> getUsersWithBook();
+
     /**
      * Method return user by id
      *
@@ -43,4 +44,11 @@ public interface UserService {
      * @return user
      */
     User createUser(final String userName, final String readerId);
+
+    /**
+     * Method return all users
+     *
+     * @return users
+     */
+    List<User> getUsers();
 }

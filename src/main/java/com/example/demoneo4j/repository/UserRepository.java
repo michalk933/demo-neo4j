@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface UserRepository extends Neo4jRepository<User, Long> {
 
     @Query("MATCH (u:User)<-[r:READ]-(b:Book) RETURN u,r,b")
-    List<User> getAllUsers();
+    List<User> getAllUsersWithBooks();
 
     @Query("MATCH (u:User {reader: {readerId}}) MATCH (u)<-[r:READ]-(b:Book) RETURN u,b,r")
     Optional<User> getUser(@Param("readerId") final String readerId);
@@ -27,5 +27,8 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
             @Param("readerId") final String readerId,
             @Param("userName") final String userName
     );
+
+    @Query("MATCH (u:User) Return u")
+    List<User> getAllUsers();
 
 }

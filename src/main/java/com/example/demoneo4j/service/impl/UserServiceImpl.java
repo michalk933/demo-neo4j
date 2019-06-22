@@ -18,7 +18,11 @@ public class UserServiceImpl implements UserService {
     private final UserRepository repository;
 
     @Override
-    public List<User> getUsers() {
+    public List<User> getUsersWithBook() {
+        return repository.getAllUsersWithBooks();
+    }
+
+    public List<User> getUsers(){
         return repository.getAllUsers();
     }
 
