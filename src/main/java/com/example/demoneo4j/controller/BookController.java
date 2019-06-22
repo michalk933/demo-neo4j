@@ -44,4 +44,9 @@ public class BookController {
         return service.createBook(book);
     }
 
+    @GetMapping("/title/{title}")
+    public List<Book> getBooksByTitle(@PathVariable("title") final String title) {
+        return service.getBooksByTitle(title);
+    }
+
 }

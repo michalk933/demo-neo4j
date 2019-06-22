@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Slf4j
@@ -43,6 +44,12 @@ public class BookServiceImpl implements BookService {
     public Book createBook(final Book book) {
         return repository.createBook(book.getTitle(), book.getIsbn(), book.getAuthor())
                 .orElseThrow(() -> new Neo4jException("Something wrong during create new book, for book: " + book));
+    }
+
+    @Override
+    public List<Book> getBooksByTitle(final String title) {
+        return repository.findByTitle(title)
+                .orElse(Collections.singletonList(new Book()));
     }
 
 }

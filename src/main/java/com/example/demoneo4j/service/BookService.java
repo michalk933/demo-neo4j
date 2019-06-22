@@ -32,7 +32,7 @@ public interface BookService {
      * Method return update book or throw exception Neo4jException
      *
      * @param bookId book id
-     * @param book book data
+     * @param book   book data
      * @return book after update
      */
     Book updateBook(final long bookId, final Book book);
@@ -45,5 +45,12 @@ public interface BookService {
      */
     Book createBook(final Book book);
 
+    /**
+     * Method return books by title or parts title
+     *
+     * @param title title or parts title
+     * @return books
+     */
+    List<Book> getBooksByTitle(final String title);
 
 }
