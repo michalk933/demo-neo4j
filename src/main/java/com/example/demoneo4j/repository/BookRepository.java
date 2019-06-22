@@ -35,7 +35,7 @@ public interface BookRepository extends Neo4jRepository<Book, Long> {
             @Param("author") final String author
     );
 
-    @Query("MATCH (b:Book) WHERE (b.title=~'(?i).*{title}.*') RETURN b ")
+    @Query("MATCH (b:Book) WHERE b.title=~ {title} RETURN b ")
     Optional<List<Book>> findByTitle(@Param("title") final String title);
 
 }

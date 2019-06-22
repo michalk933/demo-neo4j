@@ -48,8 +48,12 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> getBooksByTitle(final String title) {
-        return repository.findByTitle(title)
+        return repository.findByTitle(this.queryFormatTitle(title))
                 .orElse(Collections.singletonList(new Book()));
+    }
+
+    private String queryFormatTitle(final String title) {
+        return String.format("(?i).*%1$s.*", title);
     }
 
 }
