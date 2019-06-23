@@ -23,7 +23,7 @@ import static com.example.demoneo4j.model.FileName.USER_FILE_NAME;
 
 @Service
 @RequiredArgsConstructor
-public class ExportServiceImpl implements ExportService {
+class ExportServiceImpl implements ExportService {
 
     private final ExportProperties exportProperties;
 

@@ -11,7 +11,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CategoriesServiceImpl implements CategoriesService {
+class CategoriesServiceImpl implements CategoriesService {
 
     private final CategoriesRepository repository;
 

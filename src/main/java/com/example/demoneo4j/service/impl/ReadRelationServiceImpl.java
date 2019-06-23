@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ReadRelationServiceImpl implements ReadRelationService {
+class ReadRelationServiceImpl implements ReadRelationService {
 
     private final ReadRelationshipRepository repository;
 

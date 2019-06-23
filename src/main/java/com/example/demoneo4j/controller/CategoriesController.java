@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/categories")
 @RequiredArgsConstructor
-public class CategoriesController {
+class CategoriesController {
 
     private final CategoriesService service;
 
@@ -23,7 +25,7 @@ public class CategoriesController {
     }
 
     @GetMapping("/{categoriesId}")
-    public Categories getCategoriesById(@PathVariable("categoriesId") final long categoriesId) {
+    public Categories getCategoriesById(@PathVariable("categoriesId") @Valid @NotNull final Long categoriesId) {
         return service.getCategories(categoriesId);
     }
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class TypeRelationServiceImpl implements TypeRelationService {
+class TypeRelationServiceImpl implements TypeRelationService {
 
     private final TypeRelationshipRepository repository;
 

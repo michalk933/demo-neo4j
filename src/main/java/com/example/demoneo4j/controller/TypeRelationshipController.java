@@ -5,26 +5,29 @@ import com.example.demoneo4j.service.TypeRelationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 @RestController
 @RequestMapping("/api/v1/type")
 @RequiredArgsConstructor
-public class TypeRelationshipController {
+class TypeRelationshipController {
 
     private final TypeRelationService service;
 
     @PostMapping("/{ISBN}/{typeCategories}/{rate}")
     public void createTypeRelation(
-            @PathVariable("ISBN") final String ISBN,
-            @PathVariable("typeCategories") final TypeCategories typeCategories,
-            @PathVariable("rate") final int rate
+            @PathVariable("ISBN") @Valid @NotNull final String ISBN,
+            @PathVariable("typeCategories") @Valid @NotNull final TypeCategories typeCategories,
+            @PathVariable("rate") @Valid @NotNull final Integer rate
     ) {
         service.createTypeRelation(ISBN, typeCategories, rate);
     }
 
     @PutMapping("/{typeId}/{rate}")
     public int updateRate(
-            @PathVariable("typeId") final int typeId,
-            @PathVariable("rate") final int rate
+            @PathVariable("typeId") @Valid @NotNull final Integer typeId,
+            @PathVariable("rate") @Valid @NotNull final Integer rate
     ) {
         return service.updateRateByTypeId(typeId, rate);
     }
